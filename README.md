@@ -9,7 +9,7 @@ metadata:
 spec:
   initContainers:
   - name: init-cmstore
-    image: ghcr.io/ryotarai/cmstore:master
+    image: ghcr.io/ryotarai/cmstore:v0.0.1
     command: ["cmstore", "init", "--namespace", "default", "--name", "configmap1", "--dir", "/config", "--create-if-not-found"]
     volumeMounts:
     - name: config
@@ -22,7 +22,7 @@ spec:
     - name: config
       mountPath: /config
   - name: cmstore
-    image: ghcr.io/ryotarai/cmstore:master
+    image: ghcr.io/ryotarai/cmstore:v0.0.1
     command: ["cmstore", "watch", "--namespace", "default", "--name", "configmap1", "--dir", "/config"]
     volumeMounts:
     - name: config
