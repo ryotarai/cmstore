@@ -16,9 +16,10 @@ build:
 .PHONY: run
 run: kind image
 	kind load docker-image --name=cmstore cmstore
-	kubectl --context=kind-cmstore apply -f _examples/manifests/rbac.yaml
-	kubectl --context=kind-cmstore create -f _examples/manifests/pod.yaml
+	kubectl --context=kind-cmstore apply -f _hack/manifests/rbac.yaml
+	kubectl --context=kind-cmstore create -f _hack/manifests/pod.yaml
 
 .PHONY: clean
 clean:
 	-kind delete cluster --name=cmstore
+	kubectl get pod -oname -ndefault | grep cmstore-example- | xargs kubectl delete -ndefault
