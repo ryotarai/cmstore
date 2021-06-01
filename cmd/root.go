@@ -6,7 +6,9 @@ import (
 
 var (
 	rootCmd = &cobra.Command{
-		Use: "cmstore",
+		Use:           "cmstore",
+		SilenceErrors: true,
+		SilenceUsage:  true,
 	}
 	rootFlags = struct {
 		dir       string
